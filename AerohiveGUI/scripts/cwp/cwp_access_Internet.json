@@ -1,0 +1,22 @@
+{
+"visit":{"url":"http://192.168.10.106/",
+		 "permit_url":"https://192.168.10.202/",
+         "title":"HiveManager Login",
+         "login_page_exist":"false"},
+
+"login":{"username":"bad_username", 
+         "password":"bad_password", 
+         "failed_page":"default",
+         "mode":"normal",
+         "is_permit":"false",
+         "is_success":"true",
+         "is_redirect":"none"},
+
+"register":{"firstname":"aaa",
+			"lastname":"bbb",
+			"email":"email@email",
+			"phone":"+86057181951791",
+			"visiting":"aerohive",
+			"reason":"aerohive",
+			"is_reg":"false"}
+}
