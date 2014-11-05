@@ -1,3 +1,3 @@
 AerohiveSelenium
 ================
-Due to this lib is based on remote webdriver, it can use one server to control many clients simulating GUI execution. Have fun! 
+Due to this lib is based on remote webdriver(Selenium), you can use a client to remote control many servers which has been enabled selenium services already to simulate GUI execution. Have fun! 
