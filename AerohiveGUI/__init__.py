@@ -1,20 +1,19 @@
-﻿
-  # -*- coding: UTF-8 -*-
+﻿#!/usr/bin/env python
+# -*- coding: utf-8 -*- 
+# Author: Will
 
 import argparse, os, sys, json, time, re, logging
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.firefox.firefox_profile import FirefoxProfile
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import WebDriverException, NoSuchElementException, TimeoutException
 from selenium.webdriver.common.keys import Keys
+from selenium.common.exceptions import WebDriverException, NoSuchElementException, TimeoutException
 from utils import get_default_profile, get_default_log_file, get_default_test_data, josn_process, HtmlHandler, _timeout
 '''
 Todo: 
 1.rewrite selenium.common.exceptions, when generate error, the AerohiveGUI can capture the page itself
 '''
-
-
 
 class WebGUIArgs(object):
     def __init__(self):
