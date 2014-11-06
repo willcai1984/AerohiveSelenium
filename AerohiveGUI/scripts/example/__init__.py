@@ -14,5 +14,5 @@ class example(object):
         self.w.wait_until_element_displayed(baidu_keyword_input)
         self.w.info('Get url successfully', True)
         self.w.input(baidu_keyword_input,keyword)
-        self.click(baidu_search_btn)
+        self.w.click(baidu_search_btn)
         self.w.info('Search keyword successfully', True)
