@@ -1,5 +1,3 @@
 AerohiveSelenium
 ================
-These lib file is based on Selenium, and you can use it to execute GUI automation.
-
-Use selenium to simulate operate GUI automation test 
+Due to this lib is based on remote webdriver(Selenium), you can use a client to remote control many servers which has been enabled selenium services already to simulate GUI execution. Have fun! 
