@@ -1,0 +1,12 @@
+{
+"visit":	{"url":"http://192.168.10.106/"},
+
+"login":	{"username":"admin", 
+         	"password":"aerohive"},
+
+"device":	{"mac":"1111:1111:1111",
+			"mode":"ap"},
+
+"update":	{"mode":"complete",
+			"is_check":"false"}
+}
