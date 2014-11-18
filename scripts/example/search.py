@@ -1,5 +1,5 @@
 ﻿# -*- coding: UTF-8 -*-
-from AerohiveGUI.scripts.example import example
+from AerohiveSelenium.scripts.example import example
 
 def key_search():
     con = example()

@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
-from AerohiveGUI import WebGUI, _timeout
-from AerohiveGUI.page.hm import *
+from AerohiveSelenium import WebGUI, _timeout
+from AerohiveSelenium.page.hm import *
 import time, re
 from selenium.common.exceptions import *
 from selenium.webdriver.common.keys import Keys

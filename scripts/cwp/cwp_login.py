@@ -1,7 +1,7 @@
 ﻿# -*- coding: UTF-8 -*-
 
 #python cwp_login_positive.py -r http://${sta.ip}:4444/wd/hub -t ie -f logFile --parameters
-from AerohiveGUI.scripts.cwp import CWP 
+from AerohiveSelenium.scripts.cwp import CWP 
 import time
 def cwp_login():
     cwp = CWP()

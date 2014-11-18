@@ -12,7 +12,7 @@ from selenium.common.exceptions import WebDriverException, NoSuchElementExceptio
 from utils import get_default_profile, get_default_log_file, get_default_test_data, josn_process, HtmlHandler, _timeout
 '''
 Todo: 
-1.rewrite selenium.common.exceptions, when generate error, the AerohiveGUI can capture the page itself
+1.rewrite selenium.common.exceptions, when generate error, the AerohiveSelenium can capture the page itself
 '''
 
 class WebGUIArgs(object):
@@ -86,7 +86,7 @@ class WebGUIArgs(object):
 
     def _init_logger(self):
         level = getattr(logging, self.log_level.upper())
-        logger = logging.getLogger('AerohiveGUITest')
+        logger = logging.getLogger('AerohiveSeleniumTest')
         logger.setLevel(level)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s')
         

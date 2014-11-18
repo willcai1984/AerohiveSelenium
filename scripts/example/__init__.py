@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
-from AerohiveGUI import *
-from AerohiveGUI.page.example import *
+from AerohiveSelenium import *
+from AerohiveSelenium.page.example import *
 import time, re
 
 

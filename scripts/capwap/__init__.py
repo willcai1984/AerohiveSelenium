@@ -1,11 +1,11 @@
 # -*- coding: UTF-8 -*-
 
-from AerohiveGUI import WebGUI, _timeout
-from AerohiveGUI.page.configrollback import *
+from AerohiveSelenium import WebGUI, _timeout
+from AerohiveSelenium.page.capwap import *
 import time, re
 from selenium.common.exceptions import *
 
-class ConfigRollBack(object):
+class capwap(object):
     def __init__(self):
         self.w = WebGUI()
         
@@ -29,7 +29,7 @@ class ConfigRollBack(object):
         self.w.click(monitor_device_entry_checkbox)
         self.w.info('Select device successfully', True)
         self.w.click(monitor_modify_button)
-        #modify page
+        #modify page/ set capwap to default page
         #self.w.click(modify_networkpolicy_droplist)
         #click cannot select the option, we need click option directly without click droplist
         if mode == 'ap':
@@ -41,9 +41,9 @@ class ConfigRollBack(object):
         self.w.info('Select default policy successfully', True)
         self.w.click(modify_credentials_button)
         #self.w.click(modify_credentials_primary_droplist)
-        self.w.click(modify_credentials_primary_invalidserver_option)
+        self.w.click(modify_credentials_primary_hm1_option)
         #self.w.click(modify_credentials_backup_droplist)
-        self.w.click(modify_credentials_backup_invalidserver_option)
+        self.w.click(modify_credentials_backup_default_option)
         self.w.info('Modify capwap server successfully', True)
         self.w.click(modify_save_button)
         
@@ -66,19 +66,30 @@ class ConfigRollBack(object):
         self.w.wait_until_element_displayed(update_complete_checkbox)
         if mode == 'complete':
             self.w.click(update_complete_checkbox)
-            self.w.info('Select complete mode', True)
-        else:
-            self.w.info('Select delta mode', True)
         self.w.click(update_update_button)
-        time.sleep(3)
         #after click update may pop up reboot page, reboot auto
         try:
-            self.w.click(reboot_auto_checkbox)
-        except TimeoutException, e:
-            self.w.info('No reboot option, return successful', True)
+            self.w.wait_until_element_displayed(reboot_auto_checkbox)
+        except Exception:
+            print str(Exception)
             return
-        self.w.info('Enter to reboot option, click reboot btn', True)
+        self.w.click(reboot_auto_checkbox)
         self.w.click(reboot_ok_button)
         
-    
-        
+    def unit_monitor_state(self, mac):
+        self.w.info("Enter to get monitor state process")
+        self.w.wait_until_element_displayed(top_monitor_link)
+        self.w.click(top_monitor_link)
+        #u'E01C41003D80 &nbsp;' cannot locator via xpath with spaca/&nbsp;/${nbsp}, so use start with instead        
+        monitor_device_entry_checkbox = (By.XPATH, '//td[starts-with(text(),"%s")]/../td[1]/input' % re.sub(' |:|,', '', mac).upper())
+        try:
+            self.w.wait_until_element_displayed(monitor_device_entry_checkbox, 5)
+        except TimeoutException, e:
+            self.w.wait_until_element_displayed(top_monitor_link)
+            self.w.click(top_monitor_link)
+        audit_state_locator = (By.XPATH, '//td[starts-with(text(),"%s")]/../td[2]/img' % re.sub(' |:|,', '', mac).upper())
+        audit_state = self.w.get_attribute(audit_state_locator, "title")
+        self.w.info("The audit_state of device %s is %s" % (mac, audit_state) , True)
+        conn_state_locator = (By.XPATH, '//td[starts-with(text(),"%s")]/../td[9]/img[1]' % re.sub(' |:|,', '', mac).upper())
+        conn_state = self.w.get_attribute(conn_state_locator, "title")
+        self.w.info("The connection_state of device %s is %s" % (mac, conn_state))

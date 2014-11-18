@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
-from AerohiveGUI import WebGUI, _timeout
-from AerohiveGUI.page.cwp import *
+from AerohiveSelenium import WebGUI, _timeout
+from AerohiveSelenium.page.cwp import *
 import time
 
 class CWP(object):
